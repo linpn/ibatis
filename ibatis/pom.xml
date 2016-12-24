@@ -163,24 +163,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <!-- 仓库 -->
-    <repositories>
-        <repository>
-            <id>oschina-mvn-repository</id>
-            <url>http://maven.oschina.net/content/groups/public</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>oschina-plugin-repository</id>
-            <url>http://maven.oschina.net/content/groups/public</url>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
