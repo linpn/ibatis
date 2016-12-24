@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--数据库驱动jar -->
+    <classPathEntry
+            location="/Users/Linpn/.m2/repository/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar"/>
+
+    <context id="ibator" targetRuntime="iBATIS2Java5">
+    <!--<context id="Db2Tables" targetRuntime="MyBatis3">-->
+
+        <!--数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://qdm122316290.my3w.com:3306/qdm122316290_db"
+            userId="qdm122316290" password="Mfkjesk123">
+        </jdbcConnection>
+
+        <!--默认false
+           Java type resolver will always use java.math.BigDecimal if the database column is of type DECIMAL or NUMERIC.
+         -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--生成模型类 -->
+        <javaModelGenerator targetPackage="com.ibator.model" targetProject=".">
+        </javaModelGenerator>
+
+        <!--生成Sqlmap文件 -->
+        <sqlMapGenerator targetPackage="com.ibator.sqlmap" targetProject=".">
+        </sqlMapGenerator>
+
+        <!--本修改版不需要生成DAO类，因为DAO类是多余的，ibatis本身就是DAO层的实现，在service层中直接操作SqlMapClient即可 -->
+        <!--<javaClientGenerator type="SPRING" targetPackage="com.ibatis.dao" targetProject=".">-->
+        <!--<property name="enableSubPackages" value="false"/>-->
+        <!--</javaClientGenerator>-->
+
+        <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
+        <table tableName="wp_posts" domainObjectName="Posts">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

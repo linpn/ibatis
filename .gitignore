@@ -1,0 +1,17 @@
+*.class
+*.ipr
+*.iws
+*.ids
+*.iml
+*.log
+
+classes
+target
+.idea
+.settings
+.project
+.classpath
+.DS_Store
+
+/ibator/bin/com/
+/ibator/bin/org/

@@ -1,0 +1,29 @@
+iBATIS 2.x:
+
+Merge branches "2.3.4.726 iBATIS", because ibatis 2 is not updated.
+Implementation of ibatis cache with Memcached.
+Copy from spring-orm 3.2.x as a shaded module in order to allow users using ibatis to freely upgrade to spring4 without having a hard dependency on upgrading ibatis in the process.
+
+Add in pom.xml:
+
+<dependencies>
+    <dependency>
+        <groupId>org.apache</groupId>
+        <artifactId>ibatis</artifactId>
+        <version>2.3.8</version>
+    </dependency>
+</dependencies>
+
+
+MyBatis/iBATIS Generator:
+
+Optimized MyBatis Generator 1.3.2 Released.
+
+sqlmap:
+去除包org.mybatis.generator.codegen.ibatis2(mybatis3).sqlmap.elements下的Example及多余的相关文件 -> 去掉标签中的注释(DefaultCommentGenerator) -> 修改标签中的ID(IntrospectedTable)和sqlmap文件名 -> 去掉select和delete标签中的parameterClass属性及xml内部的一些输出规则。
+
+model:
+去除包org.mybatis.generator.codegen.ibatis2(mybatis3).model下的Example及多余的相关文件 -> 修改类注释与字段注释(BaseRecordGenerator、DefaultCommentGenerator)
+
+
+
