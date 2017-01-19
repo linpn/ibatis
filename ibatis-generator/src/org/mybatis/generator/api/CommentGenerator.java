@@ -15,14 +15,10 @@
  */
 package org.mybatis.generator.api;
 
-import java.util.Properties;
-
-import org.mybatis.generator.api.dom.java.CompilationUnit;
-import org.mybatis.generator.api.dom.java.Field;
-import org.mybatis.generator.api.dom.java.InnerClass;
-import org.mybatis.generator.api.dom.java.InnerEnum;
-import org.mybatis.generator.api.dom.java.Method;
+import org.mybatis.generator.api.dom.java.*;
 import org.mybatis.generator.api.dom.xml.XmlElement;
+
+import java.util.Properties;
 
 /**
  * Implementations of this interface are used to generate comments for the
@@ -53,9 +49,9 @@ public interface CommentGenerator {
      * "@mbggenerated" to the comment. Without this tag, the Eclipse based Java
      * merge feature will fail.
      * 
-     * @param field
-     * @param introspectedTable
-     * @param introspectedColumn
+     * @param field field
+     * @param introspectedTable introspectedTable
+     * @param introspectedColumn introspectedColumn
      */
     public void addFieldComment(Field field,
             IntrospectedTable introspectedTable,
@@ -93,7 +89,7 @@ public interface CommentGenerator {
      * 
      * The default implementation does nothing.
      * 
-     * @param compilationUnit
+     * @param compilationUnit compilationUnit
      */
     public void addJavaFileComment(CompilationUnit compilationUnit);
 
@@ -102,7 +98,7 @@ public interface CommentGenerator {
      * specified xmlElement to warn users that the element was generated and is
      * subject to regeneration.
      * 
-     * @param xmlElement
+     * @param xmlElement xmlElement
      */
     public void addComment(XmlElement xmlElement);
 
@@ -116,7 +112,7 @@ public interface CommentGenerator {
      * 
      * The default implementation does nothing.
      * 
-     * @param rootElement
+     * @param rootElement rootElement
      */
     public void addRootComment(XmlElement rootElement);
 }

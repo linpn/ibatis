@@ -18,16 +18,10 @@
  */
 package com.ibatis.sqlmap.engine.mapping.sql.dynamic.elements;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import com.ibatis.sqlmap.client.SqlMapException;
+
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * @author Brandon Goodin
@@ -97,8 +91,8 @@ public class IterateContext implements Iterator {
   }
 
   /**
-   * 
-   * @return
+   * isFirst
+   * @return boolean
    * @deprecated This method should not be used to decide whether or not to add prepend and open text to the generated
    *             statement. Rather, use the methods isPrependEnabled() and someSubElementsHaveContent().
    */
@@ -165,7 +159,7 @@ public class IterateContext implements Iterator {
   }
 
   /**
-   * @param tag
+   * @param tag tag
    *          The tag to set.
    */
   public void setTag(SqlTag tag) {
@@ -173,8 +167,8 @@ public class IterateContext implements Iterator {
   }
 
   /**
-   *
-   * @return
+   * isFinal
+   * @return boolean
    */
   public boolean isFinal() {
     return isFinal;
@@ -185,7 +179,7 @@ public class IterateContext implements Iterator {
    * can increment the iterate the final iterate in the doEndFragment of the IterateTagHandler needs to know it is in
    * it's final iterate.
    *
-   * @param aFinal
+   * @param aFinal aFinal
    */
   public void setFinal(boolean aFinal) {
     isFinal = aFinal;

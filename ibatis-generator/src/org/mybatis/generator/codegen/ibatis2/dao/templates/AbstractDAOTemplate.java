@@ -15,16 +15,16 @@
  */
 package org.mybatis.generator.codegen.ibatis2.dao.templates;
 
-import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.Field;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.java.Method;
 import org.mybatis.generator.api.dom.java.Parameter;
+
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Base class for DAO templates. Subclasses should override any of the
@@ -370,7 +370,7 @@ public abstract class AbstractDAOTemplate {
      * sqlMapClient.insert(\"{0}.{1}\", {2});
      * 
      * Overriding methods should call the
-     * <code>setInsertMethodTemplate(String)</code method to set the template.
+     * <code>setInsertMethodTemplate(String)</code> method to set the template.
      * 
      */
     protected abstract void configureInsertMethodTemplate();
@@ -391,7 +391,7 @@ public abstract class AbstractDAOTemplate {
      * sqlMapClient.queryForList(\"{0}.{1}\", {2});
      * 
      * Overriding methods should call the
-     * <code>setQueryForListMethodTemplate(String)</code method to set the
+     * <code>setQueryForListMethodTemplate(String)</code> method to set the
      * template.
      */
     protected abstract void configureQueryForListMethodTemplate();
@@ -412,7 +412,7 @@ public abstract class AbstractDAOTemplate {
      * sqlMapClient.queryForObject(\"{0}.{1}\", {2});
      * 
      * Overriding methods should call the
-     * <code>setQueryForObjectMethodTemplate(String)</code method to set the
+     * <code>setQueryForObjectMethodTemplate(String)</code> method to set the
      * template.
      */
     protected abstract void configureQueryForObjectMethodTemplate();
@@ -433,7 +433,7 @@ public abstract class AbstractDAOTemplate {
      * sqlMapClient.update(\"{0}.{1}\", {2});
      * 
      * Overriding methods should call the
-     * <code>setUpdateMethodTemplate(String)</code method to set the template.
+     * <code>setUpdateMethodTemplate(String)</code> method to set the template.
      */
     protected abstract void configureUpdateMethodTemplate();
 
@@ -453,7 +453,7 @@ public abstract class AbstractDAOTemplate {
      * sqlMapClient.delete(\"{0}.{1}\", {2});
      * 
      * Overriding methods should call the
-     * <code>setDeleteMethodTemplate(String)</code method to set the template.
+     * <code>setDeleteMethodTemplate(String)</code> method to set the template.
      */
     protected abstract void configureDeleteMethodTemplate();
 }

@@ -15,13 +15,13 @@
  */
 package org.mybatis.generator.config.xml;
 
-import static org.mybatis.generator.internal.util.messages.Messages.getString;
-
-import java.util.List;
-
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
+
+import java.util.List;
+
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
 /**
  * @author Jeff Butler
@@ -32,8 +32,10 @@ public class ParserErrorHandler implements ErrorHandler {
     private List<String> errors;
 
     /**
-	 *  
-	 */
+     * ParserErrorHandler
+     * @param warnings warnings
+     * @param errors errors
+     */
     public ParserErrorHandler(List<String> warnings, List<String> errors) {
         super();
         this.warnings = warnings;

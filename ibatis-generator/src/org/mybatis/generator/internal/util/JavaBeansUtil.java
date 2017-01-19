@@ -15,31 +15,30 @@
  */
 package org.mybatis.generator.internal.util;
 
-import java.util.Locale;
-
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
+
+import java.util.Locale;
 
 /**
  * @author Jeff Butler
  */
 public class JavaBeansUtil {
 
-    /**
-	 *  
-	 */
     private JavaBeansUtil() {
         super();
     }
 
     /**
+     *
      * JavaBeans rules:
-     * 
-     * eMail > geteMail() firstName > getFirstName() URL > getURL() XAxis >
-     * getXAxis() a > getA() B > invalid - this method assumes that this is not
-     * the case. Call getValidPropertyName first. Yaxis > invalid - this method
+     *
+     * eMail  geteMail() firstName  getFirstName() URL  getURL() XAxis
+     * getXAxis() a  getA() B  invalid - this method assumes that this is not
+     * the case. Call getValidPropertyName first. Yaxis  invalid - this method
      * assumes that this is not the case. Call getValidPropertyName first.
-     * 
-     * @param property
+     *
+     * @param property property
+     * @param fullyQualifiedJavaType fullyQualifiedJavaType
      * @return the getter method name
      */
     public static String getGetterMethodName(String property,
@@ -66,12 +65,12 @@ public class JavaBeansUtil {
     /**
      * JavaBeans rules:
      * 
-     * eMail > seteMail() firstName > setFirstName() URL > setURL() XAxis >
-     * setXAxis() a > setA() B > invalid - this method assumes that this is not
-     * the case. Call getValidPropertyName first. Yaxis > invalid - this method
+     * eMail  seteMail() firstName  setFirstName() URL  setURL() XAxis
+     * setXAxis() a  setA() B  invalid - this method assumes that this is not
+     * the case. Call getValidPropertyName first. Yaxis  invalid - this method
      * assumes that this is not the case. Call getValidPropertyName first.
      * 
-     * @param property
+     * @param property property
      * @return the setter method name
      */
     public static String getSetterMethodName(String property) {
@@ -138,10 +137,10 @@ public class JavaBeansUtil {
      * case, and the second character is lower case, then the first character
      * should be made lower case
      * 
-     * eMail > eMail firstName > firstName URL > URL XAxis > XAxis a > a B > b
-     * Yaxis > yaxis
+     * eMail  eMail firstName  firstName URL  URL XAxis  XAxis a  a B  b
+     * Yaxis  yaxis
      * 
-     * @param inputString
+     * @param inputString inputString
      * @return the valid property name
      */
     public static String getValidPropertyName(String inputString) {

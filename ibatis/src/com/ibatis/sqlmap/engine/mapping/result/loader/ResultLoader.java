@@ -42,7 +42,7 @@ public class ResultLoader {
    * @param targetType
    *          - the target type of the result
    * @return the loaded result
-   * @throws SQLException
+   * @throws SQLException SQLException
    */
   public static Object loadResult(SqlMapClientImpl client, String statementName, Object parameterObject,
       Class targetType) throws SQLException {

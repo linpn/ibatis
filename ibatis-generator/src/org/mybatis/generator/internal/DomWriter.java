@@ -16,24 +16,14 @@
 
 package org.mybatis.generator.internal;
 
-import static org.mybatis.generator.internal.util.messages.Messages.getString;
+import org.mybatis.generator.exception.ShellException;
+import org.w3c.dom.*;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
 
-import org.mybatis.generator.exception.ShellException;
-import org.w3c.dom.Attr;
-import org.w3c.dom.CDATASection;
-import org.w3c.dom.Comment;
-import org.w3c.dom.Document;
-import org.w3c.dom.DocumentType;
-import org.w3c.dom.Element;
-import org.w3c.dom.EntityReference;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.ProcessingInstruction;
-import org.w3c.dom.Text;
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
 /**
  * This class is used to generate a String representation of an XML document. It
@@ -61,7 +51,11 @@ public class DomWriter {
         return s;
     }
 
-    /** Returns a sorted list of attributes. */
+    /**
+     * Returns a sorted list of attributes.
+     * @param attrs attrs
+     * @return Attr
+     */
     protected Attr[] sortAttributes(NamedNodeMap attrs) {
 
         int len = (attrs != null) ? attrs.getLength() : 0;
@@ -90,7 +84,11 @@ public class DomWriter {
 
     }
 
-    /** Normalizes and prints the given string. */
+    /**
+     * Normalizes and prints the given string.
+     * @param s s
+     * @param isAttValue s
+     */
     protected void normalizeAndPrint(String s, boolean isAttValue) {
 
         int len = (s != null) ? s.length() : 0;
@@ -101,7 +99,11 @@ public class DomWriter {
 
     }
 
-    /** Normalizes and print the given character. */
+    /**
+     * Normalizes and print the given character.
+     * @param c c
+     * @param isAttValue isAttValue
+     */
     protected void normalizeAndPrint(char c, boolean isAttValue) {
 
         switch (c) {
@@ -160,7 +162,11 @@ public class DomWriter {
         }
     }
 
-    /** Extracts the XML version from the Document. */
+    /**
+     * Extracts the XML version from the Document.
+     * @param document document
+     * @return Version
+     */
     protected String getVersion(Document document) {
         if (document == null) {
             return null;

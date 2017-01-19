@@ -81,9 +81,9 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
     }
 
     /**
-     * 
-     * @param warnings
-     * @param progressCallback
+     * calculateClientGenerators
+     * @param warnings warnings
+     * @param progressCallback progressCallback
      * @return true if an XML generator is required
      */
     protected AbstractJavaClientGenerator calculateClientGenerators(List<String> warnings,

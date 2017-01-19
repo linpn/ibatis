@@ -16,14 +16,13 @@
 
 package org.mybatis.generator.codegen.mybatis3;
 
+import org.mybatis.generator.api.IntrospectedColumn;
+
 import static org.mybatis.generator.internal.util.StringUtility.escapeStringForJava;
 import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
 
-import org.mybatis.generator.api.IntrospectedColumn;
-
 /**
  * @author Jeff Butler
- * 
  */
 public class MyBatis3FormattingUtilities {
     /**
@@ -62,7 +61,8 @@ public class MyBatis3FormattingUtilities {
     /**
      * The phrase to use in a select list. If there is a table alias, the value
      * will be "alias.columnName as alias_columnName"
-     * 
+     *
+     * @param introspectedColumn introspectedColumn
      * @return the proper phrase
      */
     public static String getSelectListPhrase(
@@ -106,7 +106,8 @@ public class MyBatis3FormattingUtilities {
 
     /**
      * Calculates the string to use in select phrases in SqlMaps.
-     * 
+     *
+     * @param introspectedColumn introspectedColumn
      * @return the aliased escaped column name
      */
     public static String getAliasedEscapedColumnName(
@@ -128,11 +129,12 @@ public class MyBatis3FormattingUtilities {
      * clauses. This is not appropriate for selects in SqlMaps because the
      * column is not escaped for MyBatis. If there is a table alias, the value
      * will be alias.columnName.
-     * 
+     * <p>
      * This method is used in the Example classes and the returned value will be
      * in a Java string. So we need to escape double quotes if they are the
      * delimiters.
-     * 
+     *
+     * @param introspectedColumn introspectedColumn
      * @return the aliased column name
      */
     public static String getAliasedActualColumnName(
@@ -162,7 +164,8 @@ public class MyBatis3FormattingUtilities {
      * The renamed column name for a select statement. If there is a table
      * alias, the value will be alias_columnName. This is appropriate for use in
      * a result map.
-     * 
+     *
+     * @param introspectedColumn introspectedColumn
      * @return the renamed column name
      */
     public static String getRenamedColumnNameForResultMap(

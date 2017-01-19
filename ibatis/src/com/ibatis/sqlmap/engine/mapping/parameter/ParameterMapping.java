@@ -149,7 +149,7 @@ public class ParameterMapping {
   /**
    * for user-defined or REF types
    * 
-   * @param typeName
+   * @param typeName typeName
    */
   public void setTypeName(String typeName) {
     this.typeName = typeName;

@@ -186,9 +186,9 @@ public class DynamicSql implements Sql, DynamicParent {
   }
 
   /**
-   * 
-   * @param bodyContent
-   * @param iterate
+   * iteratePropertyReplace
+   * @param bodyContent bodyContent
+   * @param iterate iterate
    */
   protected void iteratePropertyReplace(StringBuffer bodyContent, IterateContext iterate) {
     if (iterate != null) {

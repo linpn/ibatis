@@ -42,17 +42,17 @@ import java.util.Map;
  * {@code org.springframework.dao} exception hierarchy.
  * Uses the same {@link org.springframework.jdbc.support.SQLExceptionTranslator}
  * mechanism as {@link org.springframework.jdbc.core.JdbcTemplate}.
- * <p/>
+ * <p>
  * <p>The main method of this class executes a callback that implements a
  * data access action. Furthermore, this class provides numerous convenience
  * methods that mirror {@link SqlMapExecutor}'s
  * execution methods.
- * <p/>
+ * <p>
  * <p>It is generally recommended to use the convenience methods on this template
  * for plain query/insert/update/delete operations. However, for more complex
  * operations like batch updates, a custom SqlMapClientCallback must be implemented,
  * usually as anonymous inner class. For example:
- * <p/>
+ * <p>
  * <pre class="code">
  * getSqlMapClientTemplate().execute(new SqlMapClientCallback() {
  * public Object doInSqlMapClient(SqlMapExecutor executor) throws SQLException {
@@ -63,7 +63,7 @@ import java.util.Map;
  * return null;
  * }
  * });</pre>
- * <p/>
+ * <p>
  * The template needs a SqlMapClient to work on, passed in via the "sqlMapClient"
  * property. A Spring context typically uses a {@link SqlMapClientFactoryBean}
  * to build the SqlMapClient. The template an additionally be configured with a

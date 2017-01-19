@@ -15,14 +15,14 @@
  */
 package org.mybatis.generator.api;
 
+import org.mybatis.generator.config.Context;
+
 import static org.mybatis.generator.internal.util.EqualsUtil.areEqual;
 import static org.mybatis.generator.internal.util.HashCodeUtil.SEED;
 import static org.mybatis.generator.internal.util.HashCodeUtil.hash;
 import static org.mybatis.generator.internal.util.JavaBeansUtil.getCamelCaseString;
 import static org.mybatis.generator.internal.util.StringUtility.composeFullyQualifiedTableName;
 import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
-
-import org.mybatis.generator.config.Context;
 
 /**
  * @author Jeff Butler
@@ -54,63 +54,66 @@ public class FullyQualifiedTable {
     private String endingDelimiter;
 
     /**
+     *
      * This object is used to hold information related to the table itself, not
      * the columns in the table.
-     * 
+     *
      * @param introspectedCatalog
      *            the actual catalog of the table as returned from
      *            DatabaseMetaData. This value should only be set if the user
      *            configured a catalog. Otherwise the DatabaseMetaData is
      *            reporting some database default that we don't want in the
      *            generated code.
-     * 
+     *
      * @param introspectedSchema
      *            the actual schema of the table as returned from
      *            DatabaseMetaData. This value should only be set if the user
      *            configured a schema. Otherwise the DatabaseMetaData is
      *            reporting some database default that we don't want in the
      *            generated code.
-     * 
+     *
      * @param introspectedTableName
      *            the actual table name as returned from DatabaseMetaData
-     * 
+     *
      * @param domainObjectName
      *            the configured domain object name for this table. If nothing
      *            is configured, we'll build the domain object named based on
      *            the tableName or runtimeTableName.
-     * 
+     *
      * @param alias
      *            a configured alias for the table. This alias will be added to
      *            the table name in the SQL
-     * 
+     *
      * @param ignoreQualifiersAtRuntime
      *            if true, then the catalog and schema qualifiers will be
      *            ignored when composing fully qualified names in the generated
      *            SQL. This is used, for example, when the user needs to specify
      *            a specific schema for generating code but does not want the
      *            schema in the generated SQL
-     * 
+     *
      * @param runtimeCatalog
      *            this is used to "rename" the catalog in the generated SQL.
      *            This is useful, for example, when generating code against one
      *            catalog that should run with a different catalog.
-     * 
+     *
      * @param runtimeSchema
      *            this is used to "rename" the schema in the generated SQL. This
      *            is useful, for example, when generating code against one
      *            schema that should run with a different schema.
-     * 
+     *
      * @param runtimeTableName
      *            this is used to "rename" the table in the generated SQL. This
      *            is useful, for example, when generating code to run with an
      *            Oracle synonym. The user would have to specify the actual
      *            table name and schema for generation, but would want to use
      *            the synonym name in the generated SQL
-     * 
+     *
      * @param delimitIdentifiers
      *            if true, then the table identifiers will be delimited at
      *            runtime. The delimiter characters are obtained from the
      *            Context.
+     *
+     * @param context context
      */
     public FullyQualifiedTable(String introspectedCatalog,
             String introspectedSchema, String introspectedTableName,
@@ -162,7 +165,7 @@ public class FullyQualifiedTable {
     }
 
     /**
-     * @return
+     * @return String
      */
     public String getFullyQualifiedTableNameAtRuntime() {
         StringBuilder localCatalog = new StringBuilder();
@@ -203,7 +206,7 @@ public class FullyQualifiedTable {
     }
 
     /**
-     * @return
+     * @return String
      */
     public String getAliasedFullyQualifiedTableNameAtRuntime() {
         StringBuilder sb = new StringBuilder();
@@ -290,9 +293,11 @@ public class FullyQualifiedTable {
     }
 
     /**
+     *
      * Calculates a Java package fragment based on the table catalog and schema.
      * If qualifiers are ignored, then this method will return an empty string
-     * 
+     *
+     * @param isSubPackagesEnabled isSubPackagesEnabled
      * @return the subpackage for this table
      */
     public String getSubPackage(boolean isSubPackagesEnabled) {

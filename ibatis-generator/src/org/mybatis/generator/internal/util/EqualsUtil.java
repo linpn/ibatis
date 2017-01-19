@@ -55,9 +55,12 @@ public final class EqualsUtil {
 
     /**
      * Possibly-null object field.
-     * 
+     *
      * Includes type-safe enumerations and collections, but does not include
      * arrays. See class comment.
+     * @param aThis aThis
+     * @param aThat aThat
+     * @return boolean
      */
     static public boolean areEqual(Object aThis, Object aThat) {
         return aThis == null ? aThat == null : aThis.equals(aThat);

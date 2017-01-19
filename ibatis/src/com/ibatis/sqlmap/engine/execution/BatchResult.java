@@ -1,12 +1,12 @@
 /**
  * Copyright 2004-2015 the original author or authors.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,37 +19,39 @@ import java.io.Serializable;
 
 /**
  * This class holds the statement and row information for every successful batch executed by iBATIS
- * 
- * @author Jeff Butler
  *
+ * @author Jeff Butler
  */
 public class BatchResult implements Serializable {
-  private String sql;
-  private String statementId;
-  private int[] updateCounts;
+    private String sql;
+    private String statementId;
+    private int[] updateCounts;
 
-  /**
-   * 
-   */
-  public BatchResult(String statementId, String sql) {
-    super();
-    this.statementId = statementId;
-    this.sql = sql;
-  }
+    /**
+     * BatchResult
+     *
+     * @param statementId statementId
+     * @param sql         sql
+     */
+    public BatchResult(String statementId, String sql) {
+        super();
+        this.statementId = statementId;
+        this.sql = sql;
+    }
 
-  public String getSql() {
-    return sql;
-  }
+    public String getSql() {
+        return sql;
+    }
 
-  public int[] getUpdateCounts() {
-    return updateCounts;
-  }
+    public int[] getUpdateCounts() {
+        return updateCounts;
+    }
 
-  public void setUpdateCounts(int[] updateCounts) {
-    this.updateCounts = updateCounts;
-  }
+    public void setUpdateCounts(int[] updateCounts) {
+        this.updateCounts = updateCounts;
+    }
 
-  public String getStatementId() {
-    return statementId;
-  }
+    public String getStatementId() {
+        return statementId;
+    }
 }

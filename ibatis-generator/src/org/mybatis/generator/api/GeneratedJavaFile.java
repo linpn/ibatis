@@ -27,6 +27,11 @@ public class GeneratedJavaFile extends GeneratedFile {
 
     /**
      * Default constructor
+     *
+     * @param compilationUnit compilationUnit
+     * @param targetProject targetProject
+     * @param fileEncoding fileEncoding
+     * @param javaFormatter javaFormatter
      */
     public GeneratedJavaFile(CompilationUnit compilationUnit,
             String targetProject,

@@ -15,14 +15,14 @@
  */
 package com.ibatis.sqlmap.engine.mapping.sql.dynamic.elements;
 
+import com.ibatis.sqlmap.engine.mapping.parameter.ParameterMapping;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-
-import com.ibatis.sqlmap.engine.mapping.parameter.ParameterMapping;
 
 public class SqlTagContext {
 
@@ -74,8 +74,10 @@ public class SqlTagContext {
   }
 
   /**
+   *
    * examine the value of the top RemoveFirstPrependMarker object on the stack.
-   * 
+   *
+   * @param sqlTag sqlTag
    * @return was the first prepend removed
    */
   public boolean peekRemoveFirstPrependMarker(SqlTag sqlTag) {
@@ -89,7 +91,7 @@ public class SqlTagContext {
    * pop the first RemoveFirstPrependMarker once the recursion is on it's way out of the recursion loop and return it's
    * internal value.
    *
-   * @param tag
+   * @param tag tag
    */
   public void popRemoveFirstPrependMarker(SqlTag tag) {
 
@@ -103,7 +105,7 @@ public class SqlTagContext {
   /**
    * push a new RemoveFirstPrependMarker object with the specified internal state
    * 
-   * @param tag
+   * @param tag tag
    */
   public void pushRemoveFirstPrependMarker(SqlTag tag) {
 
@@ -148,7 +150,7 @@ public class SqlTagContext {
   /**
    * iterate context is stored here for nested dynamic tags in the body of the iterate tag
    * 
-   * @param iterateContext
+   * @param iterateContext iterateContext
    */
   public void pushIterateContext(IterateContext iterateContext) {
     iterateContextStack.addFirst(iterateContext);
@@ -195,7 +197,9 @@ class RemoveFirstPrependMarker {
   private SqlTag tag;
 
   /**
-   * 
+   * RemoveFirstPrependMarker
+   * @param tag tag
+   * @param removeFirstPrepend removeFirstPrepend
    */
   public RemoveFirstPrependMarker(SqlTag tag, boolean removeFirstPrepend) {
     this.removeFirstPrepend = removeFirstPrepend;

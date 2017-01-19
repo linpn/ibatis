@@ -15,35 +15,23 @@
  */
 package org.mybatis.generator.internal;
 
-import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
-import static org.mybatis.generator.internal.util.messages.Messages.getString;
-
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.mybatis.generator.api.CommentGenerator;
-import org.mybatis.generator.api.FullyQualifiedTable;
-import org.mybatis.generator.api.JavaFormatter;
-import org.mybatis.generator.api.Plugin;
-import org.mybatis.generator.api.IntrospectedColumn;
-import org.mybatis.generator.api.IntrospectedTable;
-import org.mybatis.generator.api.JavaTypeResolver;
-import org.mybatis.generator.api.XmlFormatter;
+import org.mybatis.generator.api.*;
 import org.mybatis.generator.api.dom.DefaultJavaFormatter;
 import org.mybatis.generator.api.dom.DefaultXmlFormatter;
 import org.mybatis.generator.codegen.ibatis2.IntrospectedTableIbatis2Java2Impl;
 import org.mybatis.generator.codegen.ibatis2.IntrospectedTableIbatis2Java5Impl;
 import org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3Impl;
 import org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3SimpleImpl;
-import org.mybatis.generator.config.CommentGeneratorConfiguration;
-import org.mybatis.generator.config.Context;
-import org.mybatis.generator.config.PluginConfiguration;
-import org.mybatis.generator.config.JavaTypeResolverConfiguration;
-import org.mybatis.generator.config.PropertyRegistry;
-import org.mybatis.generator.config.TableConfiguration;
+import org.mybatis.generator.config.*;
 import org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl;
 import org.mybatis.generator.internal.util.StringUtility;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
 /**
  * This class creates the different objects needed by the generator
@@ -72,7 +60,7 @@ public class ObjectFactory {
      * when searching for properties files that may be
      * referenced in the configuration file. 
      * 
-     * @param classLoader
+     * @param classLoader classLoader
      */
     public static synchronized void addResourceClassLoader(
             ClassLoader classLoader) {
@@ -86,7 +74,7 @@ public class ObjectFactory {
      * interfaces.  Examples are JDBC drivers, root classes, root
      * interfaces, etc.
      * 
-     * @param classLoader
+     * @param classLoader classLoader
      */
     public static synchronized void addExternalClassLoader(
             ClassLoader classLoader) {
@@ -99,7 +87,7 @@ public class ObjectFactory {
      * model root classes, etc. It is not appropriate for any class that extends
      * one of the supplied classes or interfaces.
      * 
-     * @param type
+     * @param type type
      * @return the Class loaded from the external classloader
      * @throws ClassNotFoundException
      */
@@ -289,8 +277,8 @@ public class ObjectFactory {
      * only usable for validation (i.e. for a context to determine
      * if the target is ibatis2 or mybatis3).
      *  
-     * @param context
-     * @return
+     * @param context context
+     * @return IntrospectedTable
      */
     public static IntrospectedTable createIntrospectedTableForValidation(Context context) {
         String type = context.getTargetRuntime();

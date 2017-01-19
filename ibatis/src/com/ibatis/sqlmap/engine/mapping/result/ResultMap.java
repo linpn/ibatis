@@ -316,7 +316,7 @@ public class ResultMap {
    *
    * @return row read as an array of column values.
    *
-   * @throws java.sql.SQLException
+   * @throws java.sql.SQLException SQLException
    */
   public Object[] getResults(StatementScope statementScope, ResultSet rs) throws SQLException {
     ErrorContext errorContext = statementScope.getErrorContext();
@@ -420,10 +420,10 @@ public class ResultMap {
    * current row.</li>
    * </ul>
    * 
-   * @param mapping
-   * @param statementScope
-   * @param resultObject
-   * @param values
+   * @param mapping mapping
+   * @param statementScope statementScope
+   * @param resultObject resultObject
+   * @param values values
    */
   protected void setNestedResultMappingValue(ResultMapping mapping, StatementScope statementScope, Object resultObject,
       Object[] values) {

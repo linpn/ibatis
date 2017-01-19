@@ -25,8 +25,9 @@ public abstract class GeneratedFile {
     protected String targetProject;
 
     /**
-	 *  
-	 */
+     * GeneratedFile
+     * @param targetProject targetProject
+     */
     public GeneratedFile(String targetProject) {
         super();
         this.targetProject = targetProject;

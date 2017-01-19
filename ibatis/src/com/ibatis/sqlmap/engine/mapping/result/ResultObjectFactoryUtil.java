@@ -58,11 +58,7 @@ public class ResultObjectFactoryUtil {
    * 
    * This allows the factory to selectively create objects, also allows for the common possibility that a factory is not
    * configured.
-   * 
-   * @param factory
-   *          the factory to use. May be null!
-   * @param statementId
-   *          the ID of the statement that generated the call to this method
+   *
    * @param clazz
    *          the type of object to create
    * @return a new instance of the specified class. The instance must be castable to the specified class.
@@ -119,8 +115,8 @@ public class ResultObjectFactoryUtil {
    * be called in a "nested" fashion if there are sub-selects. Calls to this method should be equally balanced with
    * calls to cleanupResultObjectFactory().
    * 
-   * @param resultObjectFactory
-   * @param statementId
+   * @param resultObjectFactory resultObjectFactory
+   * @param statementId statementId
    */
   public static void setupResultObjectFactory(ResultObjectFactory resultObjectFactory, String statementId) {
     Stack<FactorySettings> fss = (Stack<FactorySettings>) factorySettings.get();

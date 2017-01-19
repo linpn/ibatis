@@ -68,8 +68,8 @@ public interface ResultObjectFactory {
    * Called for each property configured in the SqlMapCong file. All the properties will be set before any call is made
    * to createInstance
    * 
-   * @param name
-   * @param value
+   * @param name name
+   * @param value value
    */
   void setProperty(String name, String value);
 }

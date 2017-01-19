@@ -211,6 +211,8 @@ public class MemcachedController implements CacheController {
 
     /**
      * 获取MemcachedClient对象
+     *
+     * @return MemcachedClient
      */
     public MemcachedClient getMemcached() {
         return MemcachedController.memcached;
@@ -218,6 +220,8 @@ public class MemcachedController implements CacheController {
 
     /**
      * 设置MemcachedClient对象
+     *
+     * @param memcached MemcachedClient
      */
     public void setMemcached(MemcachedClient memcached) {
         MemcachedController.memcached = memcached;

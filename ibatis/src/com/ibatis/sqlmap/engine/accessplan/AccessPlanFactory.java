@@ -30,8 +30,8 @@ public class AccessPlanFactory {
   /**
    * Creates an access plan for working with a bean
    *
-   * @param clazz
-   * @param propertyNames
+   * @param clazz clazz
+   * @param propertyNames propertyNames
    * @return An access plan
    */
   public static AccessPlan getAccessPlan(Class clazz, String[] propertyNames) {

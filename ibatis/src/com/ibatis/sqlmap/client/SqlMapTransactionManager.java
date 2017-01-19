@@ -40,7 +40,7 @@ public interface SqlMapTransactionManager {
    *   sqlMap.endTransaction();
    * }
    * </pre>
-   * <p/>
+   * <p>
    * Always call endTransaction() once startTransaction() has been called.
    *
    * @throws java.sql.SQLException
@@ -49,9 +49,10 @@ public interface SqlMapTransactionManager {
   public void startTransaction() throws SQLException;
 
   /**
+   *
    * Demarcates the beginning of a transaction scope using the specified transaction isolation. Transactions must be
    * properly committed or rolled back to be effective. Use the following pattern when working with transactions:
-   * 
+   *
    * <pre>
    * try {
    *   sqlMap.startTransaction(Connection.TRANSACTION_REPEATABLE_READ);
@@ -61,9 +62,10 @@ public interface SqlMapTransactionManager {
    *   sqlMap.endTransaction();
    * }
    * </pre>
-   * <p/>
+   * <p>
    * Always call endTransaction() once startTransaction() has been called.
    *
+   * @param transactionIsolation transactionIsolation
    * @throws java.sql.SQLException
    *           If an error occurs while starting the transaction, or the transaction could not be started.
    */
@@ -88,7 +90,7 @@ public interface SqlMapTransactionManager {
 
   /**
    * Allows the developer to easily use an externally supplied connection when executing statements.
-   * <p/>
+   * <p>
    * <b>Important:</b> Using a user supplied connection basically sidesteps the transaction manager, so you are
    * responsible for appropriately. Here's a (very) simple example (throws SQLException):
    * 
@@ -116,18 +118,18 @@ public interface SqlMapTransactionManager {
    * }
    * </pre>
    *
-   * @param connnection
-   * @throws SQLException
+   * @param connnection connnection
+   * @throws SQLException SQLException
    */
   public void setUserConnection(Connection connnection) throws SQLException;
 
   /**
    * Returns the current user supplied connection as set by setUserConnection().
-   * <p/>
+   * <p>
    * TODO : DEPRECATED
    *
    * @return The current user supplied connection.
-   * @throws SQLException
+   * @throws SQLException SQLException
    * @deprecated Use getCurrentConnection() instead.
    */
   public Connection getUserConnection() throws SQLException;
@@ -137,7 +139,7 @@ public interface SqlMapTransactionManager {
    * no transaction has been started, and if no user provided connection has been set.
    *
    * @return The current connection or null.
-   * @throws SQLException
+   * @throws SQLException SQLException
    */
   public Connection getCurrentConnection() throws SQLException;
 

@@ -30,7 +30,7 @@ public interface DataExchange {
   /**
    * Initializes the data exchange instance.
    *
-   * @param properties
+   * @param properties properties
    */
   public void initialize(Map properties);
 

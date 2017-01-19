@@ -16,9 +16,9 @@
 
 package org.springframework.orm.ibatis;
 
-import java.sql.SQLException;
-
 import com.ibatis.sqlmap.client.SqlMapExecutor;
+
+import java.sql.SQLException;
 
 /**
  * Callback interface for data access code that works with the iBATIS
@@ -54,8 +54,6 @@ public interface SqlMapClientCallback<T> {
 	 * @return a result object, or {@code null} if none
 	 * @throws SQLException if thrown by the iBATIS SQL Maps API
 	 * @see SqlMapClientTemplate#execute
-	 * @see SqlMapClientTemplate#executeWithListResult
-	 * @see SqlMapClientTemplate#executeWithMapResult
 	 */
 	T doInSqlMapClient(SqlMapExecutor executor) throws SQLException;
 

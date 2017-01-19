@@ -39,7 +39,7 @@ public interface TransactionConfig {
    * This should not be used. It does nothing and is here purely to prevent Spring integration from breaking
    * 
    * @deprecated
-   * @param maximumConcurrentTransactions
+   * @param maximumConcurrentTransactions maximumConcurrentTransactions
    */
   void setMaximumConcurrentTransactions(int maximumConcurrentTransactions);
 
@@ -48,11 +48,12 @@ public interface TransactionConfig {
   void setForceCommit(boolean forceCommit);
 
   /**
-   * This method should call setProperties. It is here simply to ease transition
    *
+   * This method should call setProperties. It is here simply to ease transition
+   * @param props props
+   * @throws SQLException SQLException
+   * @throws TransactionException TransactionException
    * @deprecated
-   * @param props
-   *          - Properties
    */
   void initialize(Properties props) throws SQLException, TransactionException;
 

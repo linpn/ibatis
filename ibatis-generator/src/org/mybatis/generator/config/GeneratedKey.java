@@ -15,14 +15,14 @@
  */
 package org.mybatis.generator.config;
 
-import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
-import static org.mybatis.generator.internal.util.messages.Messages.getString;
-
-import java.util.List;
-
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.internal.db.DatabaseDialects;
+
+import java.util.List;
+
+import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
 /**
  * This class specifies that a key is auto-generated, either as an identity
@@ -42,7 +42,11 @@ public class GeneratedKey {
     private String type;
 
     /**
-     * 
+     * GeneratedKey
+     * @param column column
+     * @param configuredSqlStatement configuredSqlStatement
+     * @param isIdentity isIdentity
+     * @param type type
      */
     public GeneratedKey(String column, String configuredSqlStatement,
             boolean isIdentity, String type) {
@@ -79,10 +83,10 @@ public class GeneratedKey {
 
     /**
      * This method is used by the iBATIS2 generators to know
-     * if the XML <selectKey> element should be placed
+     * if the XML selectKey element should be placed
      * before the insert SQL statement.
      * 
-     * @return
+     * @return boolean
      */
     public boolean isPlacedBeforeInsertInIbatis2() {
         boolean rc;

@@ -55,12 +55,17 @@ public class RowHandlerCallback {
   }
 
   /**
+   *
    * Prepares the row object, and passes it to the row handler
    *
    * @param statementScope
    *          - the request scope
    * @param results
    *          - the result data
+   * @param statementScope
+   * @param results
+   * @param rs rs
+   * @throws SQLException SQLException
    */
   public void handleResultObject(StatementScope statementScope, Object[] results, ResultSet rs) throws SQLException {
     Object object;

@@ -34,7 +34,7 @@ import java.util.Map;
 /**
  * Implementation of ExtendedSqlMapClient
  */
-public class SqlMapClientImpl implements SqlMapClient, ExtendedSqlMapClient {
+public class SqlMapClientImpl implements SqlMapClient {
 
   private static final Log log = LogFactory.getLog(SqlMapClientImpl.class);
 
@@ -184,7 +184,7 @@ public class SqlMapClientImpl implements SqlMapClient, ExtendedSqlMapClient {
    * TODO Deprecated
    *
    * @return Current connection
-   * @throws SQLException
+   * @throws SQLException SQLException
    * @deprecated
    */
   public Connection getUserConnection() throws SQLException {

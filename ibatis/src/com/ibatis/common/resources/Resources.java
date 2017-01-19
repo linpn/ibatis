@@ -363,7 +363,7 @@ public class Resources extends Object {
    * Use this method to set the Charset to be used when calling the getResourceAsReader methods. This will allow iBATIS
    * to function properly when the system default encoding doesn't deal well with unicode (IBATIS-340, IBATIS-349)
    * 
-   * @param charset
+   * @param charset charset
    */
   public static void setCharset(Charset charset) {
     Resources.charset = charset;

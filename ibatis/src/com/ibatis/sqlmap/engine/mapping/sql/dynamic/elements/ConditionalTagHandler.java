@@ -147,10 +147,12 @@ public abstract class ConditionalTagHandler extends BaseTagHandler {
   }
 
   /**
+   *
    * This method will add the proper index values to an indexed property string if we are inside an iterate tag
-   * 
-   * @param ctx
-   * @param tag
+   *
+   * @param ctx ctx
+   * @param tag tag
+   * @return String
    */
   protected String getResolvedProperty(SqlTagContext ctx, SqlTag tag) {
     String prop = tag.getPropertyAttr();

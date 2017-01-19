@@ -28,22 +28,23 @@ public class GeneratedXmlFile extends GeneratedFile {
     private String targetPackage;
 
     private boolean isMergeable;
-    
+
     private XmlFormatter xmlFormatter;
 
     /**
-     * 
-     * @param document
-     * @param fileName
-     * @param targetPackage
-     * @param targetProject
-     * @param isMergeable
-     *            true if the file can be merged by the built in XML file
-     *            merger.
+     * true if the file can be merged by the built in XML file
+     * merger.
+     *
+     * @param document document
+     * @param fileName fileName
+     * @param targetPackage targetPackage
+     * @param targetProject targetProject
+     * @param isMergeable isMergeable
+     * @param xmlFormatter xmlFormatter
      */
     public GeneratedXmlFile(Document document, String fileName,
-            String targetPackage, String targetProject, boolean isMergeable,
-            XmlFormatter xmlFormatter) {
+                            String targetPackage, String targetProject, boolean isMergeable,
+                            XmlFormatter xmlFormatter) {
         super(targetProject);
         this.document = document;
         this.fileName = fileName;

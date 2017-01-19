@@ -201,7 +201,7 @@ public class SqlMapSessionImpl implements SqlMapSession {
    * TODO Deprecated
    *
    * @return Current connection
-   * @throws SQLException
+   * @throws SQLException SQLException
    * @deprecated
    */
   public Connection getUserConnection() throws SQLException {
