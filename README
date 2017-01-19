@@ -8,7 +8,7 @@ Add in pom.xml:
 
 <dependencies>
     <dependency>
-        <groupId>org.apache</groupId>
+        <groupId>com.github.linpn</groupId>
         <artifactId>ibatis</artifactId>
         <version>2.3.8</version>
     </dependency>

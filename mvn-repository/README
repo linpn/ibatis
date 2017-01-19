@@ -1,0 +1,6 @@
+<repositories>
+    <repository>
+        <id>ibatis-mvn-repository</id>
+        <url>https://raw.githubusercontent.com/linpn/ibatis/master/mvn-repository</url>
+    </repository>
+</repositories>
