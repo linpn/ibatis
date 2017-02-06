@@ -10,7 +10,7 @@
     <name>ibatis</name>
     <modules>
         <module>ibatis</module>
-        <module>ibatis-generator</module>
+        <module>ibator</module>
     </modules>
     
 </project>
