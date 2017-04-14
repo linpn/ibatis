@@ -20,13 +20,13 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapExecutor;
 import com.ibatis.sqlmap.client.SqlMapSession;
 import com.ibatis.sqlmap.client.event.RowHandler;
+import com.ibatis.sqlmap.engine.cache.CacheController;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.JdbcUpdateAffectedIncorrectNumberOfRowsException;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 import org.springframework.jdbc.support.JdbcAccessor;
-import org.springframework.orm.ibatis.cache.MemcachedController;
 import org.springframework.util.Assert;
 
 import javax.sql.DataSource;
@@ -85,7 +85,7 @@ public class SqlMapClientTemplate extends JdbcAccessor implements SqlMapClientOp
 
     private SqlMapClient sqlMapClient;
 
-    private MemcachedController cacheController;
+    private CacheController cacheController;
 
     /**
      * Create a new SqlMapClientTemplate.
@@ -133,14 +133,14 @@ public class SqlMapClientTemplate extends JdbcAccessor implements SqlMapClientOp
     /**
      * Set the iBATIS Database Layer CacheController that defines the mapped statements.
      */
-    public MemcachedController getCacheController() {
+    public CacheController getCacheController() {
         return cacheController;
     }
 
     /**
      * Return the iBATIS Database Layer CacheController that this template works with.
      */
-    public void setCacheController(MemcachedController cacheController) {
+    public void setCacheController(CacheController cacheController) {
         this.cacheController = cacheController;
     }
 
