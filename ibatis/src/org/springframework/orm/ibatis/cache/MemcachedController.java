@@ -5,10 +5,11 @@ import com.ibatis.sqlmap.engine.cache.CacheKey;
 import com.ibatis.sqlmap.engine.cache.CacheModel;
 import net.rubyeye.xmemcached.MemcachedClient;
 import net.rubyeye.xmemcached.exception.MemcachedException;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Properties;
@@ -138,23 +139,29 @@ public class MemcachedController implements CacheController {
      * 获取转化后的key， 如果参数cacheKey为已经转化过的key，则直接返回
      */
     private String getKey(CacheModel cacheModel, Object cacheKey) {
-        if (cacheKey instanceof CacheKey) {
-            String ckey = cacheKey.toString();
-            ckey = ckey.replaceAll("^([\\-\\d]+\\|)([\\-\\d]+\\|)", "");
-            ckey = ckey.replaceAll("^(.+\\|)*(\\w+\\.\\w+\\|)(\\d+\\|)(.*)", "$1$2$4");
+        try {
+            if (cacheKey instanceof CacheKey) {
+                String ckey = cacheKey.toString();
+                ckey = ckey.replaceAll("^([\\-\\d]+\\|)([\\-\\d]+\\|)", "");
+                ckey = ckey.replaceAll("^(.+\\|)*(\\w+\\.\\w+\\|)(\\d+\\|)(.*)", "$1$2$4");
+                ckey = new BigInteger(1, MessageDigest.getInstance("MD5").digest(ckey.getBytes())).toString(16);
 
-            String key = IBATIS_MEMCACHED_DATA + "|" + cacheModel.getId() + "|" + DigestUtils.md5Hex(ckey);
+                String key = IBATIS_MEMCACHED_DATA + "|" + cacheModel.getId() + "|" + ckey;
 
-            if (logger.isDebugEnabled()) {
-                logger.debug("++++ ibatis缓存原始KEY:" + cacheKey + " +++");
-                logger.debug("++++ ibatis缓存去本地化的KEY:" + ckey + " +++");
-                logger.debug("++++ ibatis缓存最终使用的KEY:" + key + " +++");
+                if (logger.isDebugEnabled()) {
+                    logger.debug("++++ ibatis缓存原始KEY:" + cacheKey + " +++");
+                    logger.debug("++++ ibatis缓存去本地化的KEY:" + ckey + " +++");
+                    logger.debug("++++ ibatis缓存最终使用的KEY:" + key + " +++");
+                }
+
+                return key;
             }
 
-            return key;
-        }
+            return cacheKey.toString();
 
-        return cacheKey.toString();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void putKey(CacheModel cacheModel, Object cacheKey) throws TimeoutException, InterruptedException, MemcachedException {
