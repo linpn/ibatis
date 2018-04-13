@@ -18,6 +18,7 @@ package org.mybatis.generator.codegen.ibatis2.sqlmap;
 import org.mybatis.generator.api.FullyQualifiedTable;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.Document;
+import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.AbstractXmlGenerator;
 import org.mybatis.generator.codegen.XmlConstants;
@@ -26,9 +27,7 @@ import org.mybatis.generator.codegen.ibatis2.sqlmap.elements.*;
 import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
 /**
- * 
  * @author Jeff Butler
- * 
  */
 public class SqlMapGenerator extends AbstractXmlGenerator {
 
@@ -188,6 +187,9 @@ public class SqlMapGenerator extends AbstractXmlGenerator {
         if (introspectedTable.getRules().generateUpdateByPrimaryKeySelective()) {
             AbstractXmlElementGenerator elementGenerator = new UpdateByPrimaryKeySelectiveElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, parentElement);
+
+            // Linpn：xml块换行
+            parentElement.addElement(new TextElement(""));
         }
     }
 
@@ -215,6 +217,10 @@ public class SqlMapGenerator extends AbstractXmlGenerator {
         elementGenerator.setIntrospectedTable(introspectedTable);
         elementGenerator.setProgressCallback(progressCallback);
         elementGenerator.setWarnings(warnings);
+
+        // Linpn：xml块换行
+        parentElement.addElement(new TextElement(""));
+
         elementGenerator.addElements(parentElement);
     }
 
