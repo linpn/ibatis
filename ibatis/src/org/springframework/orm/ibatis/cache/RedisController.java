@@ -88,7 +88,7 @@ public class RedisController implements CacheController {
     @Override
     public void flush(CacheModel cacheModel) {
         try {
-            Set<String> keys = redis.keys(IBATIS_ROOT + ":" + cacheModel.getId());
+            Set<String> keys = redis.keys(IBATIS_ROOT + ":" + cacheModel.getId() + "*");
             redis.delete(keys);
 
         } catch (Exception e) {
