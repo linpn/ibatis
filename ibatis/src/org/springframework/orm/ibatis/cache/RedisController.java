@@ -9,6 +9,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.util.StringUtils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -26,7 +27,7 @@ public class RedisController implements CacheController {
     protected final static Log logger = LogFactory.getLog(RedisController.class);
 
     private static RedisTemplate<String, Object> redisTemplate;
-    private static final String IBATIS_ROOT = "ibatis";
+    private static String IBATIS_ROOT = "ibatis";
     private static final String NULL_OBJECT = "SERIALIZABLE_NULL_OBJECT";
 
 
@@ -142,7 +143,8 @@ public class RedisController implements CacheController {
      * @param connectionFactory connectionFactory
      */
     public void setConnectionFactory(RedisConnectionFactory connectionFactory) {
-        RedisController.redisTemplate = new RedisTemplate<String, Object>();;
+        RedisController.redisTemplate = new RedisTemplate<String, Object>();
+        ;
         redisTemplate.setConnectionFactory(connectionFactory);
 
         //为key设置的序列化工具
@@ -156,6 +158,14 @@ public class RedisController implements CacheController {
         redisTemplate.setHashValueSerializer(jdkSerializationRedisSerializer);
 
         redisTemplate.afterPropertiesSet();
+    }
+
+    /**
+     * @param root
+     */
+    public void setRedisRootKey(String root) {
+        if (!StringUtils.isEmpty(root))
+            IBATIS_ROOT = root + ":" + IBATIS_ROOT;
     }
 
 }
