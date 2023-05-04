@@ -5,7 +5,10 @@ import com.ibatis.sqlmap.engine.cache.CacheKey;
 import com.ibatis.sqlmap.engine.cache.CacheModel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -22,7 +25,7 @@ public class RedisController implements CacheController {
 
     protected final static Log logger = LogFactory.getLog(RedisController.class);
 
-    private static RedisTemplate<String, Object> redis;
+    private static RedisTemplate<String, Object> redisTemplate;
     private static final String IBATIS_ROOT = "ibatis";
     private static final String NULL_OBJECT = "SERIALIZABLE_NULL_OBJECT";
 
@@ -35,7 +38,7 @@ public class RedisController implements CacheController {
         String key = this.getKey(cacheModel, cacheKey);
 
         try {
-            Object value = redis.opsForValue().get(key);
+            Object value = redisTemplate.opsForValue().get(key);
             if (NULL_OBJECT.equals(value))
                 value = null;
 
@@ -56,7 +59,7 @@ public class RedisController implements CacheController {
         String key = this.getKey(cacheModel, cacheKey);
 
         try {
-            redis.opsForValue().set(key, object, cacheModel.getFlushInterval(), TimeUnit.MILLISECONDS);
+            redisTemplate.opsForValue().set(key, object, cacheModel.getFlushInterval(), TimeUnit.MILLISECONDS);
 
         } catch (Exception e) {
             logger.error("ibatis redis 插入键为" + key + "的缓存失败。 异常信息如下，请及时排查", e);
@@ -71,8 +74,8 @@ public class RedisController implements CacheController {
         String key = this.getKey(cacheModel, cacheKey);
 
         try {
-            Object value = redis.opsForValue().get(key);
-            redis.delete(key);
+            Object value = redisTemplate.opsForValue().get(key);
+            redisTemplate.delete(key);
             return value;
 
         } catch (Exception e) {
@@ -88,8 +91,8 @@ public class RedisController implements CacheController {
     @Override
     public void flush(CacheModel cacheModel) {
         try {
-            Set<String> keys = redis.keys(IBATIS_ROOT + ":" + cacheModel.getId() + "*");
-            redis.delete(keys);
+            Set<String> keys = redisTemplate.keys(IBATIS_ROOT + ":" + cacheModel.getId() + "*");
+            redisTemplate.delete(keys);
 
         } catch (Exception e) {
             logger.error("ibatis redis flush 清除缓存异常。 异常信息如下，请及时排查", e);
@@ -133,23 +136,26 @@ public class RedisController implements CacheController {
         }
     }
 
-
     /**
-     * 获取RedisTemplate对象
+     * 设置RedisConnectionFactory对象
      *
-     * @return RedisTemplate
+     * @param connectionFactory connectionFactory
      */
-    public RedisTemplate<String, Object> getRedis() {
-        return RedisController.redis;
-    }
+    public void setConnectionFactory(RedisConnectionFactory connectionFactory) {
+        RedisController.redisTemplate = new RedisTemplate<String, Object>();;
+        redisTemplate.setConnectionFactory(connectionFactory);
 
-    /**
-     * 设置RedisTemplate对象
-     *
-     * @param redis RedisTemplate
-     */
-    public void setRedis(RedisTemplate<String, Object> redis) {
-        RedisController.redis = redis;
+        //为key设置的序列化工具
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        redisTemplate.setKeySerializer(stringRedisSerializer);
+        redisTemplate.setHashKeySerializer(stringRedisSerializer);
+
+        //为value定制的序列化工具
+        JdkSerializationRedisSerializer jdkSerializationRedisSerializer = new JdkSerializationRedisSerializer();
+        redisTemplate.setValueSerializer(jdkSerializationRedisSerializer);
+        redisTemplate.setHashValueSerializer(jdkSerializationRedisSerializer);
+
+        redisTemplate.afterPropertiesSet();
     }
 
 }
