@@ -144,7 +144,6 @@ public class RedisController implements CacheController {
      */
     public void setConnectionFactory(RedisConnectionFactory connectionFactory) {
         RedisController.redisTemplate = new RedisTemplate<String, Object>();
-        ;
         redisTemplate.setConnectionFactory(connectionFactory);
 
         //为key设置的序列化工具
